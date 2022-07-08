@@ -4,7 +4,7 @@ $.ajax({
   url: "https://data.transportation.gov/resource/4f3n-jbg2.json",
   type: "GET",
   data: {
-    "$limit": 5000,
+    "$limit": 50,
     "$$app_token": "Qto9G2rlKlEYzT0U1Kb6RzJLj"
   }
 }).done(function (data) {
