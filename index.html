@@ -48,9 +48,14 @@
         
             <form autocomplete="off">
                 <div class="autocomplete" style="width:300px;">
-                    <input id="city1" type="text" name="city1" placeholder="View By City">
+                    <input id="city1" type="text" name="city1" placeholder="First Metro Area">
+                </div>
+
+                <div class="autocomplete" style="width:300px;">
+                    <input id="city2" type="text" name="city2" placeholder="Second Metro Area">
                 </div>
             </form>
+
             <br>
 
             <button class="btn btn-primary" onclick="findFlights()">View Routes</button>
@@ -71,6 +76,7 @@
         console.log("While autocompleting, got this for city1s: ")
         console.log(city1s)
         autocomplete(document.getElementById("city1"), city1s);
+        autocomplete(document.getElementById("city2"), city1s);
     </script>
 
 
