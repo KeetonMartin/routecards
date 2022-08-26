@@ -10,15 +10,15 @@ function getCity1s() {
       "$group": "city1",
       "$order": "city1",
       "$limit": 5000
-    } 
+    }
   }).done(function (cities) {
     // console.log(cities);
     // city1s = cities;
     output = "[";
     for (var i = 0, len = cities.length; i < len; ++i) {
-      output+= "\"" + cities[i]["city1"] + "\",";
+      output += "\"" + cities[i]["city1"] + "\",";
     }
-    output+= "]"
+    output += "]"
     console.log(output)
   })
   return city1s;
@@ -39,15 +39,25 @@ function findFlights() {
 
     city1selection = document.getElementById("city1").value;
     console.log("City1 selection: " + city1selection);
+    city2selection = document.getElementById("city2").value;
+    console.log("City2 selection: " + city2selection);
 
     var html = '<table class="table"><thead><tr></tr></thead><tbody>';
-    
+
     html += "<th scope=\"col\">Largest Carrier</th><th scope=\"col\">City 1</th><th scope=\"col\">City 2</th><th scope=\"col\">Largest Carrier Avg Fare</th><th scope=\"col\">Year</th><th scope=\"col\">Quarter</th>"
 
     for (var i = 0, len = global_data.length; i < len; ++i) {
 
+      skippable = true;
+      if (city1selection == global_data[i]["city1"] && city2selection == global_data[i]["city2"]) {
+        skippable = false;
+      } else if (city2selection == global_data[i]["city1"] && city1selection == global_data[i]["city2"]) {
+        skippable = false;
+      }
+
       // console.log("City1 selection: " + city1selection + " vs. curr: " + global_data[i]["city1"]);
-      if (city1selection != global_data[i]["city1"] && city1selection != global_data[i]["city2"] && city1selection!="") { continue; }
+      // if (city1selection != global_data[i]["city1"] && city1selection != global_data[i]["city2"] && city1selection != "") { continue; }
+      if (skippable) { continue; }
 
       html += '<tr>';
       // for (var j = 0, rowLen = global_data[i].length; j < rowLen; ++j) {
@@ -60,15 +70,15 @@ function findFlights() {
       html += '<td>' + global_data[i]["year"] + '</td>';
       html += '<td>' + global_data[i]["quarter"] + '</td>';
 
-  
+
       html += "</tr>";
     }
     html += '</tbody><tfoot><tr></tr></tfoot></table>';
-  
-    $( ".output" ).empty();
+
+    $(".output").empty();
     $(html).appendTo('#output');
   })
-  
+
 }
 
 // $.ajax({
