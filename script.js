@@ -45,6 +45,10 @@ function findFlights() {
     document.getElementById("city1map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
     document.getElementById("city2map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
     
+    document.getElementById("recomText").innerHTML=" <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
+
+    document.getElementById("theMapsContainer").style.visibility = "visible";
+
     var html = '<table class="table"><thead><tr></tr></thead><tbody>';
 
     html += "<th scope=\"col\">Largest Carrier</th><th scope=\"col\">City 1</th><th scope=\"col\">City 2</th><th scope=\"col\">Largest Carrier Avg Fare</th><th scope=\"col\">Year</th><th scope=\"col\">Quarter</th>"
