@@ -42,6 +42,9 @@ function findFlights() {
     city2selection = document.getElementById("city2").value;
     console.log("City2 selection: " + city2selection);
 
+    document.getElementById("city1map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    document.getElementById("city2map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    
     var html = '<table class="table"><thead><tr></tr></thead><tbody>';
 
     html += "<th scope=\"col\">Largest Carrier</th><th scope=\"col\">City 1</th><th scope=\"col\">City 2</th><th scope=\"col\">Largest Carrier Avg Fare</th><th scope=\"col\">Year</th><th scope=\"col\">Quarter</th>"
@@ -80,6 +83,8 @@ function findFlights() {
   })
 
 }
+
+
 
 // $.ajax({
 //   url: "https://data.transportation.gov/resource/4f3n-jbg2.json",

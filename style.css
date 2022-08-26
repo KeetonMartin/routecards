@@ -47,3 +47,27 @@ input[type=submit] {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+.mapSquare
+{
+    margin:1px;
+    width:20%;
+    text-align:left;
+    border: 1px solid gray;
+    display:inline-block;    
+}
+
+.mapsContainer
+{
+    text-align:center;
+    width:100%;
+}
