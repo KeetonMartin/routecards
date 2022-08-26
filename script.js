@@ -24,6 +24,69 @@ function getCity1s() {
   return city1s;
 }
 
+function populateLowestFareCard(carrier) {
+  //
+}
+
+function populateLargestCard() {
+  //
+}
+
+function isTargetRow(city1selection, city2selection, row) {
+  skippable = true;
+  if (city1selection == row["city1"] && city2selection == row["city2"]) {
+    skippable = false;
+  } else if (city2selection == row["city1"] && city1selection == row["city2"]) {
+    skippable = false;
+  }
+
+  if (skippable) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function populateInsights(city1selection, city2selection, insightData) {
+
+  // console.log(insightData);
+  var targetCitiesData = insightData.filter( element => isTargetRow(city1selection, city2selection, element))
+  console.log(targetCitiesData);
+
+  //find most recent year
+  mostRecentYear = 1999;
+  for (var i = 0, len = targetCitiesData.length; i < len; ++i) {
+    if (mostRecentYear < targetCitiesData[i]["year"]) {
+      mostRecentYear = targetCitiesData[i]["year"];
+    }
+  }
+  
+  //find 4 most recent quarters
+
+  //find 1 most recent quarter
+  mostRecentQuarter = 0;
+  for (var i = 0, len = targetCitiesData.length; i < len; ++i) {
+    if (mostRecentQuarter < targetCitiesData[i]["quarter"] && targetCitiesData[i]["year"] == mostRecentYear) {
+      mostRecentQuarter = targetCitiesData[i]["quarter"]
+    }
+  }
+
+  document.getElementById("insightsTitle").innerHTML = mostRecentYear + ", Quarter " + mostRecentQuarter;
+
+  //Estalish lowest fare carrier most recent quarter, populate card
+  lowestFareCarrier = targetCitiesData.filter( element => element["year"]==mostRecentYear && element["quarter"]==mostRecentQuarter)[0];
+  console.log("LF Carrier: " + lowestFareCarrier["carrier_low"])
+
+  //Establish largest fare carrier most recent quarter, populate card
+
+  //Select a credit card to recommend
+
+  //Populate credit card card
+
+  //Display insights
+  document.getElementById("insights").style.visibility = "visible";
+}
+
 function findFlights() {
   $.ajax({
     url: "https://data.transportation.gov/resource/4f3n-jbg2.json",
@@ -42,12 +105,14 @@ function findFlights() {
     city2selection = document.getElementById("city2").value;
     console.log("City2 selection: " + city2selection);
 
+    populateInsights(city1selection, city2selection, data)
+
     document.getElementById("city1map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
     document.getElementById("city2map").src="https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
     
     document.getElementById("recomText").innerHTML=" <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
 
-    document.getElementById("theMapsContainer").style.visibility = "visible";
+    // document.getElementById("theMapsContainer").style.visibility = "visible";
 
     var html = '<table class="table"><thead><tr></tr></thead><tbody>';
 

@@ -80,31 +80,31 @@
                 </div>
             </div>
 
-            <!-- <div class="container px-4 py-5" id="custom-cards">
-                <h2 class="pb-2 border-bottom">Custom cards</h2>
+            <div class="container px-4 py-5" id="insights">
+                <h2 class="pb-2 border-bottom" id="insightsTitle">Insights</h2>
 
                 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
                     <div class="col">
                         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                            style="background-image: url('unsplash-photo-1.jpg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h2>
+                            style="background-image: url('assets/party-dots.svg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="lowestFareCarrier">
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue</h2>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                            class="rounded-circle border border-white">
+                                        <img src="https://www.jetblue.com/magnoliapublic/dam/logo/jetblue-logo.svg" alt="Bootstrap" width="32" height="32"
+                                            class="rounded-circle border border-white" id="lowestFareCarrierLogo">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#geo-fill" />
                                         </svg>
-                                        <small>Earth</small>
+                                        <small>Lowest Fares</small>
                                     </li>
                                     <li class="d-flex align-items-center">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#calendar3" />
                                         </svg>
-                                        <small>3d</small>
+                                        <small id="lowestFareCarrierMS">28%</small>
                                     </li>
                                 </ul>
                             </div>
@@ -113,26 +113,26 @@
 
                     <div class="col">
                         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                            style="background-image: url('unsplash-photo-2.jpg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to
-                                    multiple lines</h2>
+                            style="background-image: url('https://www.sec.gov/Archives/edgar/data/27904/000101968710004423/delta_8k-ex99011.jpg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="largestCarrier">
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="largestCarrierName">Delta</h2>
+                                <p>Some stats go here</p>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
-                                            class="rounded-circle border border-white">
+                                        <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg" alt="Bootstrap" width="32" height="32"
+                                            class="rounded-circle border border-white" id="largestCarrierLogo">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#geo-fill" />
                                         </svg>
-                                        <small>Pakistan</small>
+                                        <small>Largest Carrier</small>
                                     </li>
                                     <li class="d-flex align-items-center">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#calendar3" />
                                         </svg>
-                                        <small>4d</small>
+                                        <small id="largestCarrierMS">30%</small>
                                     </li>
                                 </ul>
                             </div>
@@ -141,19 +141,19 @@
 
                     <div class="col">
                         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                            style="background-image: url('unsplash-photo-3.jpg');">
+                            style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h2>
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">AMEX</h2>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                        <img src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg" alt="Bootstrap" width="32" height="32"
                                             class="rounded-circle border border-white">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#geo-fill" />
                                         </svg>
-                                        <small>California</small>
+                                        <small>Card For You</small>
                                     </li>
                                     <li class="d-flex align-items-center">
                                         <svg class="bi me-2" width="1em" height="1em">
@@ -167,7 +167,7 @@
                     </div>
                 </div>
             </div>
- -->
+
 
             <div class="mapsContainer" id="theMapsContainer">
                 <span class="mapSquare">
@@ -204,6 +204,7 @@
 
     <script>
         document.getElementById("theMapsContainer").style.visibility = "hidden";
+        document.getElementById("insights").style.visibility = "hidden";
     </script>
 
     <script>
