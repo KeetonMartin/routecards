@@ -45,21 +45,21 @@
     <main>
 
         <div class="container py-4">
-            <header class="pb-3 mb-4 border-bottom">
-                <a href="./index.html" class="d-flex align-items-center text-dark text-decoration-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            <header class="p-4 bg-dark text-white border-bottom rounded-3 " style="background-image: url('assets/routeCardsSplash2.png'); background-position: center center; background-size: cover;">
+                <a href="./index.html" class="d-flex align-items-center text-white text-decoration-none justify-content-end">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-credit-card" viewBox="0 0 16 16">
                         <path
                             d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
                         <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-                    </svg>
+                    </svg> -->
                     <span class="fs-4">RouteCards</span>
                 </a>
             </header>
 
 
-            <div class="p-5 mb-4 text-bg-dark rounded-3">
-                <div class="container-fluid py-5">
+            <div class="p-5 mb-4 text-bg-dark rounded-3" >
+                <div class="container-fluid py-5" >
                     <h1 class="display-5 fw-bold">Welcome to RouteCards</h1>
                     <p class="col-md-8 fs-4"> You tell us which city-pair you fly the most, we'll tell you which credit
                         card to get to optimize your points or cash back.</p>
@@ -85,7 +85,7 @@
 
                 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
                     <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="lowestFareCarrierUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('assets/party-dots.svg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="lowestFareCarrier">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue</h2>
@@ -112,11 +112,11 @@
                     </div>
 
                     <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="largestCarrierUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('https://www.sec.gov/Archives/edgar/data/27904/000101968710004423/delta_8k-ex99011.jpg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="largestCarrier">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="largestCarrierName">Delta</h2>
-                                <p>Some stats go here</p>
+                                <!-- <p>Some stats go here</p> -->
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
                                         <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg" alt="Bootstrap" width="32" height="32"
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="recommendationUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">AMEX</h2>
@@ -153,13 +153,17 @@
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#geo-fill" />
                                         </svg>
-                                        <small>Card For You</small>
+                                        <small>Recommended Card</small>
                                     </li>
                                     <li class="d-flex align-items-center">
                                         <svg class="bi me-2" width="1em" height="1em">
                                             <use xlink:href="#calendar3" />
                                         </svg>
-                                        <small>5d</small>
+                                        <!-- <form action="https://google.com">
+                                            <input type="submit" value="Go to Google" />
+                                        </form> -->
+                                        
+                                        <button onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')" class="btn btn-outline-light">Apply</button>
                                     </li>
                                 </ul>
                             </div>
@@ -167,8 +171,7 @@
                     </div>
                 </div>
             </div>
-
-
+            
             <div class="mapsContainer" id="theMapsContainer">
                 <span class="mapSquare">
                     <img id="city1map" src="">
@@ -188,12 +191,13 @@
             </div>
 
 
+
             <div class="output" id='output'>
 
             </div>
 
             <footer class="pt-3 mt-4 text-muted border-top">
-                &copy; Keeton Martin, 2022
+                &copy; Keeton Martin, 2022. This website is not finished and should not be considered financial advice.
             </footer>
 
         </div>

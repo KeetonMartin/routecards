@@ -19,9 +19,13 @@ client = Socrata("data.transportation.gov", "Qto9G2rlKlEYzT0U1Kb6RzJLj")
 
 # First 2000 results, returned as JSON from API / converted to Python list of
 # dictionaries by sodapy.
-results = client.get("4f3n-jbg2", limit=5)
+results = client.get("4f3n-jbg2")
 
 # Convert to pandas DataFrame
 results_df = pd.DataFrame.from_records(results)
 
 print(results_df)
+print(sorted(results_df["carrier_lg"].unique()))
+print(sorted(results_df["carrier_low"].unique()))
+
+print("MX?", results_df.loc[results_df['carrier_lg'] == "MX"])
