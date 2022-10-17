@@ -31,7 +31,9 @@ logos = {
   "United": "assets/unitedLogo.jpg",
   "Southwest": "https://logos-world.net/wp-content/uploads/2020/10/Southwest-Airlines-Emblem.png",
   "Avelo": "",
-  "Amex": "amexSplash"
+  "Amex": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
+  "The Platinum Card": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
+  "Chase Sapphire Reserve": "assets/chaseLogo.jpeg"
 }
 
 splashArts = {
@@ -48,7 +50,15 @@ splashArts = {
   "United": "assets/unitedSplash2.jpeg",
   "Southwest": "assets/southwestSplash.jpeg",
   "Avelo": "",
-  "Amex": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
+  "Chase Sapphire Reserve": "assets/sapphireSplash.png",
+  "Amex": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
+  "The Platinum Card": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg"
+
+}
+
+applicationLinks = {
+  "Chase Sapphire Reserve": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+  "The Platinum Card": "https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0"
 }
 
 
@@ -158,8 +168,47 @@ function populateInsights(city1selection, city2selection, insightData) {
 
   //Select a credit card to recommend
   cardScores = getCardScores(largestCarrier, lowestFareCarrier, largestCarrierMS, largestCarrierFare, lowestFareCarrierMS, lowestFareCarrierFare);
+  cardScoresArray = (Array.from(scoreMap.entries()));
 
-  //Populate credit card card
+  cardScoresClone = new Map(cardScores);
+  var maxRCScard = ([...cardScoresClone.entries()].reduce((a, e ) => e[1] > a[1] ? e : a));
+  
+  //delete top card from clone map in order to find 2nd highest card
+  cardScoresClone.delete(maxRCScard[0]) 
+  
+  var secondHighestRCScard = ([...cardScoresClone.entries()].reduce((a, e ) => e[1] > a[1] ? e : a));
+
+  console.log("The top card was " + maxRCScard[0] + " with a score of " +maxRCScard[1] + " RCS.");
+  console.log("The runner up card was " + secondHighestRCScard[0] + " with a score of " +secondHighestRCScard[1] + " RCS.");
+
+  //Populate recommendation credit card card
+
+  //Update background image and logo
+  document.getElementById("recommendationUICard").style = "background-image: url(\'" + splashArts[maxRCScard[0]] + "\');"
+  document.getElementById("recommendationLogo").src = logos[maxRCScard[0]];
+  //Update Name of Card
+  document.getElementById("recommendationCardName").innerHTML = maxRCScard[0];
+  //Update RCS
+  document.getElementById("recommendationNumRCS").innerHTML = (parseFloat(maxRCScard[1])).toFixed() + " RCS"
+  //Update App Link
+  // console.log("App link: " + applicationLinks[maxRCScard[0]]);
+  document.getElementById("recommendationAppLink").onclick = function() { window.open(applicationLinks[maxRCScard[0]]) };
+
+  //Populate runner up recommendation credit card card
+
+  //Update background image and logo
+  document.getElementById("recommendationRunnerUpUICard").style = "background-image: url(\'" + splashArts[secondHighestRCScard[0]] + "\');"
+  document.getElementById("recommendationRunnerUpLogo").src = logos[secondHighestRCScard[0]];
+  //Update Name of Card
+  document.getElementById("recommendationRunnerUpCardName").innerHTML = secondHighestRCScard[0];
+  //Update RCS
+  document.getElementById("recommendationRunnerUpNumRCS").innerHTML = (parseFloat(secondHighestRCScard[1])).toFixed() + " RCS"
+  //Update App Link
+  // console.log("App link: " + applicationLinks[maxRCScard[0]]);
+  document.getElementById("recommendationRunnerUpAppLink").onclick = function() { window.open(applicationLinks[secondHighestRCScard[0]]) };
+
+
+
 
   //Display insights
   document.getElementById("insights").style.visibility = "visible";

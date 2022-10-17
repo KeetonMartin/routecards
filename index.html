@@ -23,11 +23,11 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9PFXE53CGM"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-9PFXE53CGM');
+    gtag('config', 'G-9PFXE53CGM');
 </script>
 
 <body onload="getCity1s()">
@@ -57,8 +57,10 @@
     <main>
 
         <div class="container py-4">
-            <header class="p-4 bg-dark text-white border-bottom rounded-3 " style="background-image: url('assets/routeCardsSplash2.png'); background-position: center center; background-size: cover;">
-                <a href="./index.html" class="d-flex align-items-center text-white text-decoration-none justify-content-end">
+            <header class="p-4 bg-dark text-white border-bottom rounded-3 "
+                style="background-image: url('assets/routeCardsSplash2.png'); background-position: center center; background-size: cover;">
+                <a href="./index.html"
+                    class="d-flex align-items-center text-white text-decoration-none justify-content-end">
                     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-credit-card" viewBox="0 0 16 16">
                         <path
@@ -70,8 +72,8 @@
             </header>
 
 
-            <div class="p-5 mb-4 text-bg-dark rounded-3" >
-                <div class="container-fluid py-5" >
+            <div class="p-5 mb-4 text-bg-dark rounded-3">
+                <div class="container-fluid py-5">
                     <h1 class="display-5 fw-bold">Welcome to RouteCards</h1>
                     <p class="col-md-8 fs-4"> You tell us which city-pair you fly the most, we'll tell you which credit
                         card to get to optimize your points or cash back.</p>
@@ -97,14 +99,18 @@
 
                 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
                     <div class="col">
-                        <div id="lowestFareCarrierUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="lowestFareCarrierUICard"
+                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('assets/party-dots.svg');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="lowestFareCarrier">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue</h2>
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+                                id="lowestFareCarrier">
+                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue
+                                </h2>
                                 <p id="lowestFareCarrierFare">Average Fare: </p>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://www.jetblue.com/magnoliapublic/dam/logo/jetblue-logo.svg" alt="Bootstrap" width="32" height="32"
+                                        <img src="https://www.jetblue.com/magnoliapublic/dam/logo/jetblue-logo.svg"
+                                            alt="Bootstrap" width="32" height="32"
                                             class="rounded-circle border border-white" id="lowestFareCarrierLogo">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
@@ -125,7 +131,8 @@
                     </div>
 
                     <div class="col">
-                        <div id="largestCarrierUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="largestCarrierUICard"
+                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('https://www.sec.gov/Archives/edgar/data/27904/000101968710004423/delta_8k-ex99011.jpg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="largestCarrier">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="largestCarrierName">Delta</h2>
@@ -133,7 +140,8 @@
                                 <p id="largestCarrierFare">Average Fare: </p>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg" alt="Bootstrap" width="32" height="32"
+                                        <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg"
+                                            alt="Bootstrap" width="32" height="32"
                                             class="rounded-circle border border-white" id="largestCarrierLogo">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
@@ -154,13 +162,23 @@
                     </div>
 
                     <div class="col">
-                        <div id="recommendationUICard" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                        <div id="recommendationUICard"
+                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                             style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">AMEX</h2>
+                                <h2 id="recommendationCardName" class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    AMEX
+                                </h2>
+                                <h5>
+                                    <span id="recommendationNumRCS" class="badge badge-pill badge-success">
+                                        500 RCS
+                                    </span>
+                                </h5>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
-                                        <img src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg" alt="Bootstrap" width="32" height="32"
+                                        <img id="recommendationLogo"
+                                            src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
+                                            alt="Bootstrap" width="32" height="32"
                                             class="rounded-circle border border-white">
                                     </li>
                                     <li class="d-flex align-items-center me-3">
@@ -176,8 +194,53 @@
                                         <!-- <form action="https://google.com">
                                             <input type="submit" value="Go to Google" />
                                         </form> -->
-                                        
-                                        <button onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')" class="btn btn-outline-light">Apply</button>
+
+                                        <button id="recommendationAppLink"
+                                            onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')"
+                                            class="btn btn-outline-light">Apply</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div id="recommendationRunnerUpUICard"
+                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                            style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
+                            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                                <h2 id="recommendationRunnerUpCardName" class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    AMEX</h2>
+                                <h5>
+                                    <span id="recommendationRunnerUpNumRCS" class="badge badge-pill badge-success">
+                                        500 RCS
+                                    </span>
+                                </h5>
+
+                                <ul class="d-flex list-unstyled mt-auto">
+                                    <li class="me-auto">
+                                        <img id="recommendationRunnerUpLogo"
+                                            src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
+                                            alt="Bootstrap" width="32" height="32"
+                                            class="rounded-circle border border-white">
+                                    </li>
+                                    <li class="d-flex align-items-center me-3">
+                                        <svg class="bi me-2" width="1em" height="1em">
+                                            <use xlink:href="#geo-fill" />
+                                        </svg>
+                                        <small>Also Consider</small>
+                                    </li>
+                                    <li class="d-flex align-items-center">
+                                        <svg class="bi me-2" width="1em" height="1em">
+                                            <use xlink:href="#calendar3" />
+                                        </svg>
+                                        <!-- <form action="https://google.com">
+                                            <input type="submit" value="Go to Google" />
+                                        </form> -->
+
+                                        <button id="recommendationRunnerUpAppLink"
+                                            onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')"
+                                            class="btn btn-outline-light">Apply</button>
                                     </li>
                                 </ul>
                             </div>
@@ -185,7 +248,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="mapsContainer" id="theMapsContainer">
                 <span class="mapSquare">
                     <img id="city1map" src="">
