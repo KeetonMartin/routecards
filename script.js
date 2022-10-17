@@ -33,7 +33,8 @@ logos = {
   "Avelo": "",
   "Amex": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
   "The Platinum Card": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
-  "Chase Sapphire Reserve": "assets/chaseLogo.jpeg"
+  "Chase Sapphire Reserve": "assets/chaseLogo.jpeg",
+  "Capital One Venture X": "https://play-lh.googleusercontent.com/GhAZTgji_F_YJ_TmisXH7J0PgIOYNy4vLPULklCV3Ua6cV3epNZki5DxsAe-KZB7XA"
 }
 
 splashArts = {
@@ -52,13 +53,14 @@ splashArts = {
   "Avelo": "",
   "Chase Sapphire Reserve": "assets/sapphireSplash.png",
   "Amex": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
-  "The Platinum Card": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg"
-
+  "The Platinum Card": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
+  "Capital One Venture X": "https://tbcdn.talentbrew.com/company/1732/4998/content/capital-one-Catalyst-Stop-Asian-Hate-Town-Hall-Recap-banner.jpg"
 }
 
 applicationLinks = {
   "Chase Sapphire Reserve": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
-  "The Platinum Card": "https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0"
+  "The Platinum Card": "https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0",
+  "Capital One Venture X": "https://www.capitalone.com/credit-cards/venture-x/"
 }
 
 

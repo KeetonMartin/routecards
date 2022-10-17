@@ -67,7 +67,7 @@ function incCardScoreForGeneralPerks(whichCard) {
 
     //Sign up bonus
     // console.log("SUB:"+whichCard.SUB_value+ " whichcard: " + whichCard)
-    incCardScore(whichCard, parseInt(whichCard.SUB_value)/3);
+    incCardScore(whichCard, parseInt(whichCard.SUB_value)/2);
 }
 
 function incCardScoreForAirlinePerks(whichCard, airline) {
