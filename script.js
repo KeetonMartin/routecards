@@ -151,6 +151,14 @@ function populateInsights(city1selection, city2selection, insightData) {
   largestCarrierFare = largestCarrierRecentRow["fare_lg"]
   console.log("largest Carrier: " + largestCarrier)
 
+  //populate card for city1
+  // document.getElementById("mapCity1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapCity1").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+
+  //populate card for city2
+  // document.getElementById("mapCity2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapCity2").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+
   //populate card for lowest fare carrier:
   document.getElementById("lowestFareCarrierName").innerHTML = lowestFareCarrier;
   document.getElementById("lowestFareCarrierMS").innerHTML = (parseFloat(lowestFareCarrierMS) * 100).toPrecision(3) + "% Share"
@@ -235,8 +243,8 @@ function findFlights() {
 
     populateInsights(city1selection, city2selection, data)
 
-    document.getElementById("city1map").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
-    document.getElementById("city2map").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    // document.getElementById("mapCity1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    // document.getElementById("mapCity2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
 
     document.getElementById("recomText").innerHTML = " <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
 
