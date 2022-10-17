@@ -51,6 +51,8 @@ splashArts = {
   "Amex": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
 }
 
+
+
 function getCity1s() {
   $.ajax({
     url: "https://data.transportation.gov/resource/4f3n-jbg2.json",
@@ -128,18 +130,21 @@ function populateInsights(city1selection, city2selection, insightData) {
   lowestFareCarrierCode = lowestFareCarrierRecentRow["carrier_low"];
   lowestFareCarrier = airlineCodes[lowestFareCarrierCode]
   lowestFareCarrierMS = lowestFareCarrierRecentRow["lf_ms"]
+  lowestFareCarrierFare = lowestFareCarrierRecentRow["fare_low"]
   console.log("LF Carrier: " + lowestFareCarrier)
 
   //Establish largest fare carrier most recent quarter
   largestCarrierRecentRow = (targetCitiesData.filter(element => element["year"] == mostRecentYear && element["quarter"] == mostRecentQuarter)[0]);
   largestCarrierCode = largestCarrierRecentRow["carrier_lg"];
   largestCarrier = airlineCodes[largestCarrierCode]
-  largestCarrierMS = lowestFareCarrierRecentRow["large_ms"]
+  largestCarrierMS = largestCarrierRecentRow["large_ms"]
+  largestCarrierFare = largestCarrierRecentRow["fare_lg"]
   console.log("largest Carrier: " + largestCarrier)
 
   //populate card for lowest fare carrier:
   document.getElementById("lowestFareCarrierName").innerHTML = lowestFareCarrier;
   document.getElementById("lowestFareCarrierMS").innerHTML = (parseFloat(lowestFareCarrierMS) * 100).toPrecision(3) + "% Share"
+  document.getElementById("lowestFareCarrierFare").innerHTML = "Average Fare: $" + (parseFloat(lowestFareCarrierFare)).toFixed(2)
   document.getElementById("lowestFareCarrierLogo").src = logos[lowestFareCarrier];
   document.getElementById("lowestFareCarrierUICard").style = "background-image: url(\'" + splashArts[lowestFareCarrier] + "\');"
 
@@ -147,10 +152,12 @@ function populateInsights(city1selection, city2selection, insightData) {
   //populate card for largest carrier:
   document.getElementById("largestCarrierName").innerHTML = largestCarrier;
   document.getElementById("largestCarrierMS").innerHTML = (parseFloat(largestCarrierMS)*100).toPrecision(3) + "% Share"
+  document.getElementById("largestCarrierFare").innerHTML = "Average Fare: $" + (parseFloat(largestCarrierFare)).toFixed(2)
   document.getElementById("largestCarrierLogo").src = logos[largestCarrier]
   document.getElementById("largestCarrierUICard").style = "background-image: url(\'" + splashArts[largestCarrier] + "\');"
 
   //Select a credit card to recommend
+  cardScores = getCardScores(largestCarrier, lowestFareCarrier, largestCarrierMS, largestCarrierFare, lowestFareCarrierMS, lowestFareCarrierFare);
 
   //Populate credit card card
 

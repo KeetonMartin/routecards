@@ -49,6 +49,8 @@
 
     <!-- Script -->
     <script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <script type="text/javascript" src='globalVars.js'></script>
+    <script src='recommendationEngine.js'></script>
     <script src='script.js' type="text/javascript"></script>
     <script src='autocomplete.js' type="text/javascript"></script>
 
@@ -99,6 +101,7 @@
                             style="background-image: url('assets/party-dots.svg');">
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="lowestFareCarrier">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue</h2>
+                                <p id="lowestFareCarrierFare">Average Fare: </p>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
                                         <img src="https://www.jetblue.com/magnoliapublic/dam/logo/jetblue-logo.svg" alt="Bootstrap" width="32" height="32"
@@ -127,6 +130,7 @@
                             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="largestCarrier">
                                 <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="largestCarrierName">Delta</h2>
                                 <!-- <p>Some stats go here</p> -->
+                                <p id="largestCarrierFare">Average Fare: </p>
                                 <ul class="d-flex list-unstyled mt-auto">
                                     <li class="me-auto">
                                         <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg" alt="Bootstrap" width="32" height="32"
