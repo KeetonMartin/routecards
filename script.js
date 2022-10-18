@@ -113,6 +113,9 @@ function isTargetRow(city1selection, city2selection, row) {
 
 function populateInsights(city1selection, city2selection, insightData) {
 
+  document.getElementById("maps").style.visibility = "visible";
+  document.getElementById("maps").style.height = "100%";
+
   // console.log(insightData);
   var targetCitiesData = insightData.filter(element => isTargetRow(city1selection, city2selection, element))
   console.log(targetCitiesData);
