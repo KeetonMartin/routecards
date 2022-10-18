@@ -56,7 +56,7 @@
 
     <main>
 
-        <div class="container py-4">
+        <div class="container py-5">
             <header class="p-4 bg-dark text-white border-bottom rounded-3 "
                 style="background-image: url('assets/routeCardsSplash2.png'); background-position: center center; background-size: cover;">
                 <a href="./index.html"
@@ -73,24 +73,48 @@
 
 
             <div class="p-5 mb-4 text-bg-dark rounded-3">
-                <div class="container-fluid py-5">
+                <div class="container-fluid py-4">
                     <h1 class="display-5 fw-bold">Welcome to RouteCards</h1>
-                    <p class="col-md-8 fs-4"> You tell us which city-pair you fly the most, we'll tell you which credit
+                    <p class="col-md-8 fs-5"> You tell us which city-pair you fly the most, we'll tell you which credit
                         card to get to optimize your points or cash back.</p>
                     <form autocomplete="off">
-                        <div class="autocomplete" style="width:300px;">
-                            <input id="city1" type="text" name="city1" placeholder="First Metro Area">
-                        </div>
-
-                        <div class="autocomplete" style="width:300px;">
-                            <input id="city2" type="text" name="city2" placeholder="Second Metro Area">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 autocomplete">
+                                <input class="form-control form-control-lg" id="city1" type="text" name="city1" placeholder="First Metro Area">
+                            </div>
+                            <div class="form-group col-md-6 autocomplete">
+                                <input class="form-control form-control-lg" id="city2" type="text" name="city2" placeholder="Second Metro Area">
+                            </div>
                         </div>
                     </form>
 
-                    <br>
+                    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-2" id="maps">
 
+                        <div class="col">
+                            <div id="mapCity1"
+                                class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                                style="background-image: url('');">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
 
-                    <button class="btn btn-primary btn-lg" type="button" onclick="findFlights()">View Routes</button>
+                        <div class="col">
+                            <div id="mapCity2"
+                                class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                                style="background-image: url('');">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary btn-lg mt-3" type="button" onclick="findFlights()">View Routes</button>
                 </div>
             </div>
 
@@ -98,28 +122,6 @@
                 <h2 class="pb-2 border-bottom" id="insightsTitle">Insights</h2>
 
                 <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
-
-                    <div class="col">
-                        <div id="mapCity1"
-                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                            style="background-image: url('');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div id="mapCity2"
-                            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-                            style="background-image: url('');">
-                            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col">
                         <div id="lowestFareCarrierUICard"
@@ -272,25 +274,6 @@
                 </div>
             </div>
 
-            <div class="mapsContainer" id="theMapsContainer">
-                <span class="mapSquare">
-                    <img id="city1map" src="">
-                </span>
-                <span>
-                    <div class="card text-white bg-dark mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header" id="recomText"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">AMEX Platinum</h5>
-                            <p class="card-text">This card is the perfect fit for your travel needs</p>
-                        </div>
-                    </div>
-                </span>
-                <span class="mapSquare">
-                    <img id="city2map" src="">
-                </span>
-            </div>
-
-
 
             <div class="output" id='output'>
 
@@ -307,8 +290,10 @@
 
 
     <script>
-        document.getElementById("theMapsContainer").style.visibility = "hidden";
+        // document.getElementById("theMapsContainer").style.visibility = "hidden";
         document.getElementById("insights").style.visibility = "hidden";
+        document.getElementById("maps").style.visibility = "hidden";
+        document.getElementById("maps").style.height = "0px";
     </script>
 
     <script>

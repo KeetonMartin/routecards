@@ -38,39 +38,18 @@ input[type=submit] {
   cursor: pointer;
   background-color: #454545;
   border-bottom: 1px solid #d4d4d4;
+  border-radius: 3px
 }
 .autocomplete-items div:hover {
   /*when hovering an item:*/
   background-color: DodgerBlue;
+  border-radius: 3px
 }
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
-}
-
-
-/* Set the size of the div element that contains the map */
-#map {
-  height: 400px;
-  /* The height is 400 pixels */
-  width: 100%;
-  /* The width is the width of the web page */
-}
-
-
-div.mapsContainer
-{
-  display: table;
-  width: 100%;
-  table-layout: fixed;    /* For cells of equal size */
-  padding: 1%;
-}
-
-div.mapsContainer span
-{
-  display: table-cell;
-  text-align: center;
+  border-radius: 3px
 }
 
 .cardRecommendationBox {
