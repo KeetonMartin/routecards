@@ -234,6 +234,8 @@ function populateInsights(city1selection, city2selection, insightData) {
 
   //Display insights
   document.getElementById("insights").style.visibility = "visible";
+  document.getElementById("maps").scrollIntoView(true, {behavior: "auto"});
+
 }
 
 
@@ -260,7 +262,7 @@ function findFlights() {
     // document.getElementById("mapCity1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
     // document.getElementById("mapCity2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
 
-    document.getElementById("recomText").innerHTML = " <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
+    // document.getElementById("recomText").innerHTML = " <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
 
     // document.getElementById("theMapsContainer").style.visibility = "visible";
 
