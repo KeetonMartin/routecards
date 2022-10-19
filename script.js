@@ -32,9 +32,11 @@ logos = {
   "Southwest": "https://logos-world.net/wp-content/uploads/2020/10/Southwest-Airlines-Emblem.png",
   "Avelo": "",
   "Amex": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
-  "The Platinum Card": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
+  "The Platinum Card from AMEX": "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
   "Chase Sapphire Reserve": "assets/chaseLogo.jpeg",
-  "Capital One Venture X": "https://play-lh.googleusercontent.com/GhAZTgji_F_YJ_TmisXH7J0PgIOYNy4vLPULklCV3Ua6cV3epNZki5DxsAe-KZB7XA"
+  "Capital One Venture X": "https://play-lh.googleusercontent.com/GhAZTgji_F_YJ_TmisXH7J0PgIOYNy4vLPULklCV3Ua6cV3epNZki5DxsAe-KZB7XA",
+  "Alaska Airlines Visa Signature": "https://yt3.ggpht.com/ytc/AMLnZu-C-uN4bIkAAPybtvT92uFskxUC76aU_JFD05Rpxg=s900-c-k-c0x00ffffff-no-rj",
+  "United Explorer Card": "assets/unitedLogo.jpg"
 }
 
 splashArts = {
@@ -53,14 +55,21 @@ splashArts = {
   "Avelo": "",
   "Chase Sapphire Reserve": "assets/sapphireSplash.png",
   "Amex": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
-  "The Platinum Card": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
-  "Capital One Venture X": "https://tbcdn.talentbrew.com/company/1732/4998/content/capital-one-Catalyst-Stop-Asian-Hate-Town-Hall-Recap-banner.jpg"
+  "The Platinum Card from AMEX": "https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg",
+  "Capital One Venture X": "https://tbcdn.talentbrew.com/company/1732/4998/content/capital-one-Catalyst-Stop-Asian-Hate-Town-Hall-Recap-banner.jpg",
+  "United Explorer Card": "assets/unitedSplash2.jpeg",
+  "Alaska Airlines Visa Signature": "assets/alaskaSplash3.jpeg",
+  "Sun Country": "assets/sunCountrySplash.PNG",
+  "Spirit": "assets/spiritSplash.PNG",
+  "Frontier": "assets/frontierSplash.PNG"
 }
 
 applicationLinks = {
   "Chase Sapphire Reserve": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
-  "The Platinum Card": "https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0",
-  "Capital One Venture X": "https://www.capitalone.com/credit-cards/venture-x/"
+  "The Platinum Card from AMEX": "https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0",
+  "Capital One Venture X": "https://www.capitalone.com/credit-cards/venture-x/",
+  "United Explorer Card": "https://creditcards.chase.com/travel-credit-cards/united/united-explorer",
+  "Alaska Airlines Visa Signature": "https://www.alaskaair.com/content/credit-card/visa-signature"
 }
 
 
