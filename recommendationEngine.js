@@ -67,7 +67,10 @@ function incCardScoreForGeneralPerks(whichCard) {
 
     //Sign up bonus
     // console.log("SUB:"+whichCard.SUB_value+ " whichcard: " + whichCard)
-    incCardScore(whichCard, parseInt(whichCard.SUB_value)/2);
+    incCardScore(whichCard, parseInt(whichCard.SUB_value));         //used to inc sign up bonus / 2, trying full but also account for annual fee
+
+    //Annual fee penalty
+    decCardScore(whichCard, parseInt(whichCard.annual_fee));
 }
 
 function incCardScoreForAirlinePerks(whichCard, airline) {
@@ -87,11 +90,18 @@ function incCardScoreForAirlinePerks(whichCard, airline) {
 
 function incCardScore(whichCard, amount) {
     if (amount == null) {
-        // console.log("whichCard: " + whichCard.name + " amount: " + amount);
         return;
     }
 
     scoreMap.set(whichCard.name, scoreMap.get(whichCard.name)+amount);
+}
+
+function decCardScore(whichCard, amount) {
+    if (amount == null) {
+        return;
+    }
+
+    scoreMap.set(whichCard.name, scoreMap.get(whichCard.name)-amount);
 }
 
 // function cardScoresLowest(lowestFareCarrier, )
