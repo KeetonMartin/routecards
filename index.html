@@ -30,8 +30,9 @@
     gtag('config', 'G-9PFXE53CGM');
 </script>
 
-<body onload="getCity1s()">
+<!-- <body onload="getCity1s()"> -->
 
+<body>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -75,23 +76,59 @@
             <div class="p-5 mb-4 text-bg-dark rounded-3">
                 <div class="container-fluid py-4">
                     <h1 class="display-5 fw-bold">Welcome to RouteCards</h1>
-                    <p class="col-md-8 fs-5"> You tell us which city-pair you fly the most, we'll tell you which credit
-                        card to get to optimize your points or cash back.</p>
-                    <form autocomplete="off">
-                        <div class="form-row">
-                            <div class="form-group col-md-6 autocomplete">
-                                <input class="form-control form-control-lg" id="city1" type="text" name="city1" placeholder="First Metro Area">
+                    <p class="col-md-12 fs-5"> You tell us which city-pair you fly the most, we'll tell you which credit
+                        card to get to optimize your points or miles.</p>
+
+                    <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-2 text-center">
+                        <form autocomplete="off">
+                            <div class="form-row">
+                                <div class="form-group col-md-6 autocomplete">
+                                    <input class="form-control form-control-lg" id="city1" type="text" name="city1"
+                                        placeholder="First Metro Area">
+                                </div>
+                                <div class="form-group col-md-6 autocomplete">
+                                    <input class="form-control form-control-lg" id="city2" type="text" name="city2"
+                                        placeholder="Second Metro Area">
+                                </div>
                             </div>
-                            <div class="form-group col-md-6 autocomplete">
-                                <input class="form-control form-control-lg" id="city2" type="text" name="city2" placeholder="Second Metro Area">
+
+                            <button class="btn btn-primary btn-lg mb-3" type="button" onclick="findFlights()">Cards for
+                                Cities</button>    
+                        </form>
+
+
+                        <form autocomplete="off">
+                            <div class="form-row">
+                                <div class="form-group col-md-6 autocomplete">
+                                    <input class="form-control form-control-lg" id="airport1" type="text"
+                                        name="airport1" placeholder="First Airport">
+                                </div>
+                                <div class="form-group col-md-6 autocomplete">
+                                    <input class="form-control form-control-lg" id="airport2" type="text"
+                                        name="airport2" placeholder="Second Airport">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <button class="btn btn-primary btn-lg mb-3" type="button" onclick="getAirportPairs()">Cards for
+                                Airports</button>
+    
+                        </form>
+
+
+
+                    </div>
+
+
+                    <div id="alert_placeholder"></div>
+
+
+                    <hr/>
+
 
                     <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-2" id="maps">
 
+
                         <div class="col">
-                            <div id="mapCity1"
+                            <div id="mapLocation1"
                                 class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                                 style="background-image: url('');">
                                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -102,7 +139,7 @@
                         </div>
 
                         <div class="col">
-                            <div id="mapCity2"
+                            <div id="mapLocation2"
                                 class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                                 style="background-image: url('');">
                                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -114,7 +151,6 @@
 
                     </div>
 
-                    <button class="btn btn-primary btn-lg mt-3" type="button" onclick="findFlights()">View Routes</button>
                 </div>
             </div>
 
@@ -275,9 +311,9 @@
             </div>
 
 
-            <div class="output" id='output'>
+            <!-- <div class="output" id='output'> -->
 
-            </div>
+            <!-- </div> -->
 
             <footer class="pt-3 mt-4 text-muted border-top">
                 &copy; Keeton Martin, 2022. This website is not finished and should not be considered financial advice.
@@ -303,6 +339,12 @@
         console.log(city1s)
         autocomplete(document.getElementById("city1"), city1s);
         autocomplete(document.getElementById("city2"), city1s);
+
+        var airport1s = ['ALB', 'ABQ', 'ABE', 'AMA', 'AVL', 'ATL', 'ACY', 'AUS', 'BLI', 'RDM', 'BHM', 'BOI', 'MHT', 'BOS', 'PVD', 'BZN', 'BUF', 'BTV', 'CID', 'CHS', 'CLT', 'ORD', 'MDW', 'CVG', 'CAK', 'CLE', 'COS', 'CAE', 'CMH', 'LCK', 'DAL', 'DFW', 'DAY', 'DEN', 'DSM', 'DTW', 'ELP', 'EUG', 'PAE', 'FAR', 'XNA', 'RSW', 'GRR', 'GSO', 'GSP', 'HRL', 'BDL', 'HOU', 'IAH', 'HSV', 'IND', 'JAN', 'JAX', 'MCI', 'EYW', 'TYS', 'LAS', 'LIT', 'ONT', 'SNA', 'LAX', 'BUR', 'LGB', 'SDF', 'MSN', 'MEM', 'MIA', 'FLL', 'MKE', 'MSP', 'MYR', 'ACK', 'BNA', 'MSY', 'SWF', 'JFK', 'LGA', 'ISP', 'HPN', 'EWR', 'PHF', 'ORF', 'OKC', 'OMA', 'MCO', 'PSP', 'PNS', 'PHL', 'PHX', 'AZA', 'PIT', 'PWM', 'PDX', 'RDU', 'RNO', 'RIC', 'ROC', 'SMF', 'SLC', 'SAT', 'SAN', 'OAK', 'SFO', 'SJC', 'SRQ', 'SAV', 'SEA', 'STL', 'SYR', 'TPA', 'TUS', 'VPS', 'BWI', 'IAD', 'DCA', 'ATW', 'ASE', 'BGR', 'BIL', 'BIS', 'EGE', 'FNT', 'FWA', 'FAT', 'JAC', 'FCA', 'MVY', 'ECP', 'SGF', 'PIE', 'HTS', 'CRP', 'HHH', 'LEX', 'PIA', 'MDT', 'IDA', 'MOT', 'MSO', 'PSC', 'FSD', 'SBN', 'MFR', 'GEG', 'BLV', 'TUL', 'CHO', 'USA', 'DAB', 'CHA', 'BTR', 'GFK', 'LBE', 'TLH', 'MKC', 'TSS', 'JRB', 'GPT', 'MLB', 'VGT', 'NYC', 'FYV', 'FNL', 'LAN', 'EFD', 'CHI', 'DTT', 'GYY', 'WAS', 'DET', 'SAC', 'CGX', 'ACV', 'HFD', 'FTW', 'BMI', 'FMY', 'ORL', 'BHC', 'WHR', 'MPB', 'STP', 'MOB', 'AIY', 'AGS', 'MGM']
+        console.log("While autocompleting, got this for city1s: ");
+        autocomplete(document.getElementById("airport1"), airport1s);
+        autocomplete(document.getElementById("airport2"), airport1s);
+
     </script>
 
 

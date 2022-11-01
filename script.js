@@ -74,28 +74,28 @@ applicationLinks = {
 
 
 
-function getCity1s() {
-  $.ajax({
-    url: "https://data.transportation.gov/resource/4f3n-jbg2.json",
-    type: "GET",
-    data: {
-      "$select": "city1",
-      "$group": "city1",
-      "$order": "city1",
-      "$limit": 5000
-    }
-  }).done(function (cities) {
-    // console.log(cities);
-    // city1s = cities;
-    output = "[";
-    for (var i = 0, len = cities.length; i < len; ++i) {
-      output += "\"" + cities[i]["city1"] + "\",";
-    }
-    output += "]"
-    console.log(output)
-  })
-  return city1s;
-}
+// function getCity1s() {
+//   $.ajax({
+//     url: "https://data.transportation.gov/resource/4f3n-jbg2.json",
+//     type: "GET",
+//     data: {
+//       "$select": "city1",
+//       "$group": "city1",
+//       "$order": "city1",
+//       "$limit": 5000
+//     }
+//   }).done(function (cities) {
+//     // console.log(cities);
+//     // city1s = cities;
+//     output = "[";
+//     for (var i = 0, len = cities.length; i < len; ++i) {
+//       output += "\"" + cities[i]["city1"] + "\",";
+//     }
+//     output += "]"
+//     console.log(output)
+//   })
+//   return city1s;
+// }
 
 function populateLowestFareCard(carrier) {
   //
@@ -122,12 +122,13 @@ function isTargetRow(city1selection, city2selection, row) {
 
 function populateInsights(city1selection, city2selection, insightData) {
 
-  document.getElementById("maps").style.visibility = "visible";
-  document.getElementById("maps").style.height = "100%";
-
   // console.log(insightData);
   var targetCitiesData = insightData.filter(element => isTargetRow(city1selection, city2selection, element))
-  console.log(targetCitiesData);
+  // console.log(targetCitiesData);
+  if (isEmpty(targetCitiesData)) {
+    showWarning();
+    return;
+  }
 
   //find most recent year
   mostRecentYear = 1999;
@@ -166,12 +167,12 @@ function populateInsights(city1selection, city2selection, insightData) {
   console.log("largest Carrier: " + largestCarrier)
 
   //populate card for city1
-  // document.getElementById("mapCity1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
-  document.getElementById("mapCity1").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+  // document.getElementById("mapLocation1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapLocation1").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
 
   //populate card for city2
-  // document.getElementById("mapCity2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
-  document.getElementById("mapCity2").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+  // document.getElementById("mapLocation2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapLocation2").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
 
   //populate card for lowest fare carrier:
   document.getElementById("lowestFareCarrierName").innerHTML = lowestFareCarrier;
@@ -230,12 +231,186 @@ function populateInsights(city1selection, city2selection, insightData) {
   document.getElementById("recommendationRunnerUpAppLink").onclick = function() { window.open(applicationLinks[secondHighestRCScard[0]]) };
 
 
-
+  //Display maps
+  document.getElementById("maps").style.visibility = "visible";
+  document.getElementById("maps").style.height = "100%";
 
   //Display insights
   document.getElementById("insights").style.visibility = "visible";
   document.getElementById("maps").scrollIntoView(true, {behavior: "auto"});
 
+  
+
+}
+
+function populateInsightsAirportMode(airport1selection, airport2selection, insightData) {
+
+
+  console.log("Insights data: #1: " + JSON.stringify( insightData[0]))
+
+  // console.log(insightData);
+  var targetAirportsData = insightData.filter(element => isTargetRowAirports(airport1selection, airport2selection, element))
+  console.log("target Airports data: " + JSON.stringify(targetAirportsData) + " and type: " + (typeof targetAirportsData));
+
+  if (isEmpty(targetAirportsData)) {
+    console.log("no airports data")
+    showWarning();
+    return;
+  }
+
+  //find most recent year
+  mostRecentYear = 1999;
+  for (var i = 0, len = targetAirportsData.length; i < len; ++i) {
+    if (mostRecentYear < targetAirportsData[i]["year"]) {
+      mostRecentYear = targetAirportsData[i]["year"];
+    }
+  }
+
+  //find 4 most recent quarters
+
+  //find 1 most recent quarter
+  mostRecentQuarter = 0;
+  for (var i = 0, len = targetAirportsData.length; i < len; ++i) {
+    if (mostRecentQuarter < targetAirportsData[i]["quarter"] && targetAirportsData[i]["year"] == mostRecentYear) {
+      mostRecentQuarter = targetAirportsData[i]["quarter"]
+    }
+  }
+
+  document.getElementById("insightsTitle").innerHTML = "Flying between " + airport1selection.replace(/ *\([^)]*\) */g, "") + " and " + airport2selection.replace(/ *\([^)]*\) */g, "") + " as of " + mostRecentYear + ", Q" + mostRecentQuarter;
+
+  //Estalish lowest fare carrier most recent quarter
+  lowestFareCarrierRecentRow = (targetAirportsData.filter(element => element["year"] == mostRecentYear && element["quarter"] == mostRecentQuarter)[0]);
+  lowestFareCarrierCode = lowestFareCarrierRecentRow["carrier_low"];
+  lowestFareCarrier = airlineCodes[lowestFareCarrierCode]
+  lowestFareCarrierMS = lowestFareCarrierRecentRow["lf_ms"]
+  lowestFareCarrierFare = lowestFareCarrierRecentRow["fare_low"]
+  console.log("LF Carrier: " + lowestFareCarrier)
+
+  //Establish largest fare carrier most recent quarter
+  largestCarrierRecentRow = (targetAirportsData.filter(element => element["year"] == mostRecentYear && element["quarter"] == mostRecentQuarter)[0]);
+  largestCarrierCode = largestCarrierRecentRow["carrier_lg"];
+  largestCarrier = airlineCodes[largestCarrierCode]
+  largestCarrierMS = largestCarrierRecentRow["large_ms"]
+  largestCarrierFare = largestCarrierRecentRow["fare_lg"]
+  console.log("largest Carrier: " + largestCarrier)
+
+
+  //populate card for Airport1
+  // document.getElementById("mapLocation1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + airport1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapLocation1").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + airport1selection.replace(/ *\([^)]*\) */g, "") + " airport" + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+
+  //populate card for Airport2
+  // document.getElementById("mapLocation2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + airport2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+  document.getElementById("mapLocation2").style = "background-image: url('" + "https://maps.googleapis.com/maps/api/staticmap?center=" + airport2selection.replace(/ *\([^)]*\) */g, "") + " airport" + "&style=invert_lightness:true&zoom=12&size=800x800&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c" + "');";
+
+  //populate card for lowest fare carrier:
+  document.getElementById("lowestFareCarrierName").innerHTML = lowestFareCarrier;
+  document.getElementById("lowestFareCarrierMS").innerHTML = (parseFloat(lowestFareCarrierMS) * 100).toPrecision(3) + "% Share"
+  document.getElementById("lowestFareCarrierFare").innerHTML = "Average Fare: $" + (parseFloat(lowestFareCarrierFare)).toFixed(2)
+  document.getElementById("lowestFareCarrierLogo").src = logos[lowestFareCarrier];
+  document.getElementById("lowestFareCarrierUICard").style = "background-image: url(\'" + splashArts[lowestFareCarrier] + "\');"
+
+
+  //populate card for largest carrier:
+  document.getElementById("largestCarrierName").innerHTML = largestCarrier;
+  document.getElementById("largestCarrierMS").innerHTML = (parseFloat(largestCarrierMS)*100).toPrecision(3) + "% Share"
+  document.getElementById("largestCarrierFare").innerHTML = "Average Fare: $" + (parseFloat(largestCarrierFare)).toFixed(2)
+  document.getElementById("largestCarrierLogo").src = logos[largestCarrier]
+  document.getElementById("largestCarrierUICard").style = "background-image: url(\'" + splashArts[largestCarrier] + "\');"
+
+
+  //Select a credit card to recommend
+  cardScores = getCardScores(largestCarrier, lowestFareCarrier, largestCarrierMS, largestCarrierFare, lowestFareCarrierMS, lowestFareCarrierFare);
+  cardScoresArray = (Array.from(scoreMap.entries()));
+
+  cardScoresClone = new Map(cardScores);
+  var maxRCScard = ([...cardScoresClone.entries()].reduce((a, e ) => e[1] > a[1] ? e : a));
+  
+  //delete top card from clone map in order to find 2nd highest card
+  cardScoresClone.delete(maxRCScard[0]) 
+  
+  var secondHighestRCScard = ([...cardScoresClone.entries()].reduce((a, e ) => e[1] > a[1] ? e : a));
+
+  console.log("The top card was " + maxRCScard[0] + " with a score of " +maxRCScard[1] + " RCS.");
+  console.log("The runner up card was " + secondHighestRCScard[0] + " with a score of " +secondHighestRCScard[1] + " RCS.");
+    
+  //Populate recommendation credit card card
+
+  //Update background image and logo
+  document.getElementById("recommendationUICard").style = "background-image: url(\'" + splashArts[maxRCScard[0]] + "\');"
+  document.getElementById("recommendationLogo").src = logos[maxRCScard[0]];
+  //Update Name of Card
+  document.getElementById("recommendationCardName").innerHTML = maxRCScard[0];
+  //Update RCS
+  document.getElementById("recommendationNumRCS").innerHTML = (parseFloat(maxRCScard[1])).toFixed() + " RCS"
+  //Update App Link
+  // console.log("App link: " + applicationLinks[maxRCScard[0]]);
+  document.getElementById("recommendationAppLink").onclick = function() { window.open(applicationLinks[maxRCScard[0]]) };
+
+  //Populate runner up recommendation credit card card
+
+  //Update background image and logo
+  document.getElementById("recommendationRunnerUpUICard").style = "background-image: url(\'" + splashArts[secondHighestRCScard[0]] + "\');"
+  document.getElementById("recommendationRunnerUpLogo").src = logos[secondHighestRCScard[0]];
+  //Update Name of Card
+  document.getElementById("recommendationRunnerUpCardName").innerHTML = secondHighestRCScard[0];
+  //Update RCS
+  document.getElementById("recommendationRunnerUpNumRCS").innerHTML = (parseFloat(secondHighestRCScard[1])).toFixed() + " RCS"
+  //Update App Link
+  // console.log("App link: " + applicationLinks[maxRCScard[0]]);
+  document.getElementById("recommendationRunnerUpAppLink").onclick = function() { window.open(applicationLinks[secondHighestRCScard[0]]) };
+
+
+  //Display maps
+  document.getElementById("maps").style.visibility = "visible";
+  document.getElementById("maps").style.height = "100%";
+
+  //Display insights
+  document.getElementById("insights").style.visibility = "visible";
+  document.getElementById("maps").scrollIntoView(true, {behavior: "auto"});
+
+
+}
+
+function getAirportPairs() {
+  $.ajax({
+    url: "https://data.transportation.gov/resource/tfrh-tu9e.json",
+    type: "GET",
+    data: {
+      "$where": "year > 2020",
+      // "$limit": 5000,
+      "$order": "passengers DESC",
+      "$$app_token": "Qto9G2rlKlEYzT0U1Kb6RzJLj"
+    }
+  }).done(function (data) {
+
+    airport1selection = document.getElementById("airport1").value;
+    console.log("airport1 selection: " + airport1selection);
+    airport2selection = document.getElementById("airport2").value;
+    console.log("airport2 selection: " + airport2selection);
+
+    populateInsightsAirportMode(airport1selection, airport2selection, data)
+
+  })
+}
+
+function isTargetRowAirports(airport1selection, airport2selection, row) {
+  skippable = true;
+  if (airport1selection == row["airport_1"] && airport2selection == row["airport_2"]) {
+    skippable = false;
+    console.log("Match here: " + row["airport_1"] + " vs. " + airport1selection)
+    console.log("Match here: " + row["airport_2"] + " vs. " + airport2selection)
+  } else if (airport2selection == row["airport_1"] && airport1selection == row["airport_2"]) {
+    console.log("Match here: " + row["airport_2"] + " vs. " + airport1selection)
+    console.log("Match here: " + row["airport_1"] + " vs. " + airport2selection)
+    skippable = false;
+  }
+
+  if (skippable) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 
@@ -259,8 +434,8 @@ function findFlights() {
 
     populateInsights(city1selection, city2selection, data)
 
-    // document.getElementById("mapCity1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
-    // document.getElementById("mapCity2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    // document.getElementById("mapLocation1").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city1selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
+    // document.getElementById("mapLocation2").src = "https://maps.googleapis.com/maps/api/staticmap?center=" + city2selection.replace(/ *\([^)]*\) */g, "") + "&zoom=12&size=400x400&key=AIzaSyDg-mF8ofSKCnwVptfJ_X-__JERjMouE-c";
 
     // document.getElementById("recomText").innerHTML = " <i class=\"bi bi-credit-card\"></i> Our Recommendation <i class=\"bi bi-credit-card\"></i> "
 
@@ -304,6 +479,22 @@ function findFlights() {
     $(html).appendTo('#output');
   })
 
+}
+
+
+bootstrap_alert = function() {}
+bootstrap_alert.warning = function(message) {
+  $('#alert_placeholder').html('<div class="alert alert-warning d-flex align-items-center"> <a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+}
+
+
+function showWarning() {
+  console.log("time to show warning")
+  bootstrap_alert.warning(' No flights found for your search. Please adjust your locations.');
+}
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
 }
 
 

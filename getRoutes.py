@@ -19,13 +19,21 @@ client = Socrata("data.transportation.gov", "Qto9G2rlKlEYzT0U1Kb6RzJLj")
 
 # First 2000 results, returned as JSON from API / converted to Python list of
 # dictionaries by sodapy.
-results = client.get("4f3n-jbg2")
+# Cities:
+# results = client.get("4f3n-jbg2")
+
+# Airports
+results = client.get_all("tfrh-tu9e")
 
 # Convert to pandas DataFrame
 results_df = pd.DataFrame.from_records(results)
 
-print(results_df)
-print(sorted(results_df["carrier_lg"].unique()))
-print(sorted(results_df["carrier_low"].unique()))
+airports = results_df['airport_1'].unique()
+# airports2 = results_df['airport_2'].unique()
+print(repr(airports))
+# print(airports2)
 
-print("MX?", results_df.loc[results_df['carrier_lg'] == "MX"])
+
+# outputString = ""
+# for airport in airports:
+#     outputString.append()
