@@ -6,6 +6,7 @@
         "capital_one_access": false,
         "priority_pass_access": true,
         "SUB_value": 1500,
+        "annual_fee": 695,
         "compatible_airlines": [
             {
                 "airline_name": "Delta",
@@ -56,6 +57,7 @@
         "capital_one_access": false,
         "priority_pass_access": false,
         "SUB_value": 600,
+        "annual_fee": 75,
         "compatible_airlines": [
             {
                 "airline_name": "American",
@@ -82,6 +84,7 @@
         "capital_one_access": false,
         "priority_pass_access": false,
         "SUB_value": 600,
+        "annual_fee": 95,
         "compatible_airlines": [
             {
                 "airline_name": "United",
@@ -100,6 +103,7 @@
         "capital_one_access": true,
         "priority_pass_access": true,
         "SUB_value": 750,
+        "annual_fee": 395,
         "compatible_airlines": [
             {
                 "airline_name": "Delta",
@@ -150,6 +154,7 @@
         "capital_one_access": false,
         "priority_pass_access": true,
         "SUB_value": 900,
+        "annual_fee": 550,
         "compatible_airlines": [
             {
                 "airline_name": "Delta",
