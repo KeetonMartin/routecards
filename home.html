@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" data-theme="business">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="f9c66e17b72bb90" content="15472d5edd6be7a756a82af6d663ede9" />
+
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.39.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="./credit-card.svg">
+
+    <title>RouteCards</title>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PFXE53CGM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9PFXE53CGM');
+</script>
+
+<body>
+
+    <!-- Script -->
+    <script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+    <script type="text/javascript" src='globalVars.js'></script>
+    <script src='recommendationEngine.js'></script>
+    <script src='script.js' type="text/javascript"></script>
+    <script src='autocomplete.js' type="text/javascript"></script>
+
+    <main>
+
+        <div class="navbar bg-primary text-primary-content">
+            <div class="flex-none">
+                <button class="btn btn-square btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-credit-card" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+                        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1">
+                <a class="btn btn-ghost normal-case text-xl">RouteCards</a>
+            </div>
+            <div class="flex-none">
+                <button class="btn btn-square btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="inline-block w-5 h-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- <div class="p-5 mb-4 text-bg-dark rounded-3">
+            <div class="container-fluid py-4">
+                <h1 class="display-5 fw-bold">Welcome to RouteCards</h1>
+                <p class="col-md-12 fs-5"> You tell us which city-pair you fly the most, we'll tell you which credit
+                    card to get to optimize your points or miles.</p>
+            </div>
+        </div> -->
+
+        <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-full">
+                    <h1 class="text-5xl font-bold">Welcome to RouteCards</h1>
+                    <p class="py-6">You tell us which city-pair you fly the most, we'll tell you which credit
+                        card to get to optimize your points or miles.</p>
+
+                    <div class="p-10 grid grid-cols-2 sm:grid-cols-2 gap-5">
+
+                        <div class="card w-96 bg-primary text-primary-content">
+                            <div class="card-body">
+
+                                <form autocomplete="off">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 py-2 autocomplete">
+                                            <input class="input w-full max-w-xs" id="city1" type="text" name="city1"
+                                                placeholder="First Metro Area">
+                                        </div>
+                                        <div class="form-group col-md-6 py-2 autocomplete">
+                                            <input class="input w-full max-w-xs" id="city2" type="text" name="city2"
+                                                placeholder="Second Metro Area">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-primary btn-lg" type="button" onclick="findFlights()">Cards
+                                        for
+                                        Cities</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card w-96 bg-primary text-primary-content">
+                            <div class="card-body">
+
+                                <form autocomplete="off">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 py-2 autocomplete">
+                                            <input class="input w-full max-w-xs" id="airport1" type="text"
+                                                name="airport1" placeholder="First Airport">
+                                        </div>
+                                        <div class="form-group col-md-6 py-2 autocomplete">
+                                            <input class="input w-full max-w-xs" id="airport2" type="text"
+                                                name="airport2" placeholder="Second Airport">
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-lg " type="button"
+                                        onclick="getAirportPairs()">Cards
+                                        for
+                                        Airports</button>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="alert_placeholder"></div>
+
+                    <div class="p-10 grid grid-cols-2 sm:grid-cols-2 gap-5" id="maps">
+
+                        <div class="card w-96 bg-base-100 shadow-xl image-full">
+                            <div id="mapLocation1"
+                                class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                                style="background-image: url('');">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card w-96 bg-base-100 shadow-xl image-full">
+                            <div id="mapLocation2"
+                                class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                                style="background-image: url('');">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                    <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container px-4 py-5 insightsScroll" id="insights">
+            <h2 class="pb-4 text-center" id="insightsTitle">Insights</h2>
+            <h3 class="pb-2 border-bottom" id="airlinesSectionTitle">Market Leaders</h3>
+
+            <div class="p-10 grid grid-cols-2 sm:grid-cols-2 gap-5">
+
+                <div class="card w-96 bg-primary text-primary-content">
+                    <div id="lowestFareCarrierUICard" class="card-body"
+                        style="background-image: url('assets/party-dots.svg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="lowestFareCarrier">
+                            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="lowestFareCarrierName">JetBlue
+                            </h2>
+                            <p id="lowestFareCarrierFare">Average Fare: </p>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">
+                                    <img src="https://www.jetblue.com/magnoliapublic/dam/logo/jetblue-logo.svg"
+                                        alt="Bootstrap" width="32" height="32"
+                                        class="rounded-circle border border-white" id="lowestFareCarrierLogo">
+                                </li>
+                                <li class="d-flex align-items-center me-3">
+                                    <svg class="bi me-2" width="1em" height="1em">
+                                        <use xlink:href="#geo-fill" />
+                                    </svg>
+                                    <small>Lowest Fares</small>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <svg class="bi me-2" width="1em" height="1em">
+                                        <use xlink:href="#calendar3" />
+                                    </svg>
+                                    <small id="lowestFareCarrierMS">28%</small>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div id="largestCarrierUICard"
+                    class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('https://www.sec.gov/Archives/edgar/data/27904/000101968710004423/delta_8k-ex99011.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" id="largestCarrier">
+                        <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" id="largestCarrierName">Delta</h2>
+                        <!-- <p>Some stats go here</p> -->
+                        <p id="largestCarrierFare">Average Fare: </p>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://img.favpng.com/19/9/1/delta-air-lines-image-computer-icons-logo-vector-graphics-png-favpng-s1SBMZREacvE4Fcibx79aKRCy.jpg"
+                                    alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white"
+                                    id="largestCarrierLogo">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Largest Carrier</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <small id="largestCarrierMS">30%</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="pb-2 border-bottom" id="recommendationSectionTitle">Card Recommendations</h3>
+
+        <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div id="recommendationUICard"
+                    class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 id="recommendationCardName" class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                            AMEX
+                        </h2>
+                        <h5>
+                            <span id="recommendationNumRCS" class="badge badge-pill badge-success">
+                                500 RCS
+                            </span>
+                        </h5>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img id="recommendationLogo"
+                                    src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
+                                    alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Recommended Card</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <!-- <form action="https://google.com">
+                                        <input type="submit" value="Go to Google" />
+                                    </form> -->
+
+                                <button id="recommendationAppLink"
+                                    onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')"
+                                    class="btn btn-outline-light">Apply</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div id="recommendationRunnerUpUICard"
+                    class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('https://icm.aexp-static.com/Internet/Acquisition/US_en/AppContent/OneSite/Data/SVG/dls/worldservice-tile-brightblue.svg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h2 id="recommendationRunnerUpCardName" class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                            AMEX</h2>
+                        <h5>
+                            <span id="recommendationRunnerUpNumRCS" class="badge badge-pill badge-success">
+                                500 RCS
+                            </span>
+                        </h5>
+
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img id="recommendationRunnerUpLogo"
+                                    src="https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg"
+                                    alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Also Consider</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <!-- <form action="https://google.com">
+                                        <input type="submit" value="Go to Google" />
+                                    </form> -->
+
+                                <button id="recommendationRunnerUpAppLink"
+                                    onclick="window.open('https://americanexpress.com/en-us/referral/KEETOMoKpN?xl=cp01&mpt=v0')"
+                                    class="btn btn-outline-light">Apply</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+        <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+            <div>
+
+                <p>Copyright © Keeton Martin, 2022. This website is not finished and should not be considered financial
+                    advice.</p>
+            </div>
+        </footer>
+
+
+    </main>
+
+    <script>
+        // document.getElementById("theMapsContainer").style.visibility = "hidden";
+        document.getElementById("insights").style.visibility = "hidden";
+        document.getElementById("maps").style.visibility = "hidden";
+        document.getElementById("maps").style.height = "0px";
+    </script>
+
+    <script>
+        // console.log("Attempting autocomplete")
+        var city1s = ["Albany, NY", "Albuquerque, NM", "Allentown/Bethlehem/Easton, PA", "Amarillo, TX", "Appleton, WI", "Asheville, NC", "Ashland, WV", "Aspen, CO", "Atlanta, GA (Metropolitan Area)", "Atlantic City, NJ", "Austin, TX", "Bangor, ME", "Baton Rouge, LA", "Belleville, IL", "Bellingham, WA", "Bend/Redmond, OR", "Billings, MT", "Birmingham, AL", "Bismarck/Mandan, ND", "Bloomington/Normal, IL", "Boise, ID", "Boston, MA (Metropolitan Area)", "Bozeman, MT", "Buffalo, NY", "Bullhead City, AZ", "Burlington, VT", "Cedar Rapids/Iowa City, IA", "Charleston, SC", "Charlotte, NC", "Charlottesville, VA", "Chattanooga, TN", "Chicago, IL", "Cincinnati, OH", "Cleveland, OH (Metropolitan Area)", "Colorado Springs, CO", "Columbia, SC", "Columbus, OH", "Concord, NC", "Corpus Christi, TX", "Dallas/Fort Worth, TX", "Daytona Beach, FL", "Dayton, OH", "Denver, CO", "Des Moines, IA", "Detroit, MI", "Eagle, CO", "El Paso, TX", "Eugene, OR", "Eureka/Arcata, CA", "Everett, WA", "Fargo, ND", "Fayetteville, AR", "Flint, MI", "Fort Collins/Loveland, CO", "Fort Myers, FL", "Fort Wayne, IN", "Fresno, CA", "Grand Forks, ND", "Grand Rapids, MI", "Great Falls, MT", "Green Bay, WI", "Greensboro/High Point, NC", "Greenville/Spartanburg, SC", "Gulfport/Biloxi, MS", "Harlingen/San Benito, TX", "Harrisburg, PA", "Hartford, CT", "Hilton Head, SC", "Houston, TX", "Huntsville, AL", "Idaho Falls, ID", "Indianapolis, IN", "Jackson/Vicksburg, MS", "Jacksonville, FL", "Jackson, WY", "Kalispell, MT", "Kansas City, MO", "Key West, FL", "Knoxville, TN", "Lansing, MI", "Laredo, TX", "Las Vegas, NV", "Latrobe, PA", "Lexington, KY", "Little Rock, AR", "Los Angeles, CA (Metropolitan Area)", "Louisville, KY", "Madison, WI", "Martha's Vineyard, MA", "Medford, OR", "Melbourne, FL", "Memphis, TN", "Miami, FL (Metropolitan Area)", "Milwaukee, WI", "Minneapolis/St. Paul, MN", "Minot, ND", "Missoula, MT", "Myrtle Beach, SC", "Nantucket, MA", "Nashville, TN", "New Orleans, LA", "New York City, NY (Metropolitan Area)", "Niagara Falls, NY", "Norfolk, VA (Metropolitan Area)", "Oklahoma City, OK", "Omaha, NE", "Orlando, FL", "Palm Springs, CA", "Panama City, FL", "Pasco/Kennewick/Richland, WA", "Paso Robles/San Luis Obispo, CA", "Pensacola, FL", "Peoria, IL", "Philadelphia, PA", "Phoenix, AZ", "Pittsburgh, PA", "Plattsburgh, NY", "Portland, ME", "Portland, OR", "Portsmouth, NH", "Punta Gorda, FL", "Raleigh/Durham, NC", "Reno, NV", "Richmond, VA", "Rochester, NY", "Rockford, IL", "Sacramento, CA", "Salt Lake City, UT", "San Antonio, TX", "San Diego, CA", "Sanford, FL", "San Francisco, CA (Metropolitan Area)", "Santa Barbara, CA", "Sarasota/Bradenton, FL", "Savannah, GA", "Seattle, WA", "Sioux Falls, SD", "South Bend, IN", "Spokane, WA", "Springfield, MO", "St. Louis, MO", "Syracuse, NY", "Tallahassee, FL", "Tampa, FL (Metropolitan Area)", "Trenton, NJ", "Tucson, AZ", "Tulsa, OK", "Valparaiso, FL", "Washington, DC (Metropolitan Area)"]
+        console.log("While autocompleting, got this for city1s: ")
+        console.log(city1s)
+        autocomplete(document.getElementById("city1"), city1s);
+        autocomplete(document.getElementById("city2"), city1s);
+
+        var airport1s = ['ALB', 'ABQ', 'ABE', 'AMA', 'AVL', 'ATL', 'ACY', 'AUS', 'BLI', 'RDM', 'BHM', 'BOI', 'MHT', 'BOS', 'PVD', 'BZN', 'BUF', 'BTV', 'CID', 'CHS', 'CLT', 'ORD', 'MDW', 'CVG', 'CAK', 'CLE', 'COS', 'CAE', 'CMH', 'LCK', 'DAL', 'DFW', 'DAY', 'DEN', 'DSM', 'DTW', 'ELP', 'EUG', 'PAE', 'FAR', 'XNA', 'RSW', 'GRR', 'GSO', 'GSP', 'HRL', 'BDL', 'HOU', 'IAH', 'HSV', 'IND', 'JAN', 'JAX', 'MCI', 'EYW', 'TYS', 'LAS', 'LIT', 'ONT', 'SNA', 'LAX', 'BUR', 'LGB', 'SDF', 'MSN', 'MEM', 'MIA', 'FLL', 'MKE', 'MSP', 'MYR', 'ACK', 'BNA', 'MSY', 'SWF', 'JFK', 'LGA', 'ISP', 'HPN', 'EWR', 'PHF', 'ORF', 'OKC', 'OMA', 'MCO', 'PSP', 'PNS', 'PHL', 'PHX', 'AZA', 'PIT', 'PWM', 'PDX', 'RDU', 'RNO', 'RIC', 'ROC', 'SMF', 'SLC', 'SAT', 'SAN', 'OAK', 'SFO', 'SJC', 'SRQ', 'SAV', 'SEA', 'STL', 'SYR', 'TPA', 'TUS', 'VPS', 'BWI', 'IAD', 'DCA', 'ATW', 'ASE', 'BGR', 'BIL', 'BIS', 'EGE', 'FNT', 'FWA', 'FAT', 'JAC', 'FCA', 'MVY', 'ECP', 'SGF', 'PIE', 'HTS', 'CRP', 'HHH', 'LEX', 'PIA', 'MDT', 'IDA', 'MOT', 'MSO', 'PSC', 'FSD', 'SBN', 'MFR', 'GEG', 'BLV', 'TUL', 'CHO', 'USA', 'DAB', 'CHA', 'BTR', 'GFK', 'LBE', 'TLH', 'MKC', 'TSS', 'JRB', 'GPT', 'MLB', 'VGT', 'NYC', 'FYV', 'FNL', 'LAN', 'EFD', 'CHI', 'DTT', 'GYY', 'WAS', 'DET', 'SAC', 'CGX', 'ACV', 'HFD', 'FTW', 'BMI', 'FMY', 'ORL', 'BHC', 'WHR', 'MPB', 'STP', 'MOB', 'AIY', 'AGS', 'MGM']
+        console.log("While autocompleting, got this for city1s: ");
+        autocomplete(document.getElementById("airport1"), airport1s);
+        autocomplete(document.getElementById("airport2"), airport1s);
+
+    </script>
+
+
+</body>
